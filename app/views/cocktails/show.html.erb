@@ -1,3 +1,16 @@
-<h1>Show Cocktails!</h1>
+<h1><%= @cocktail.name %></h1>
 
-%= link_to "Add dose", new_cocktail_dose_path(@cocktail)  %>
+
+
+<p>Cocktail name: <%= @cocktail.name %></p>
+<p>Ingredients: <%= @ingredient.name %></p>
+<% @cocktail.doses.each do |dose| %>
+<p>Ingredient: <%= dose.ingredient.name %>, Description: <%= dose.description %></p>
+<%= link_to "Delete", dose_path(dose), method: :delete, data:  { confirm: "Are you sure?" }, class: "card-remove-link" %>
+<% end  %>
+
+
+
+
+<p><%= link_to 'Cocktails List', cocktails_path %></p>
+<p><%= link_to 'Add a description',  new_cocktail_dose_path(@cocktail) %></p>
