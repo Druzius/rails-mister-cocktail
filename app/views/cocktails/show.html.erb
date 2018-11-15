@@ -3,7 +3,7 @@
 
 
 <p>Cocktail name: <%= @cocktail.name %></p>
-<p>Ingredients: <%= @ingredient.name %></p>
+<p>Ingredients:</p>
 <% @cocktail.doses.each do |dose| %>
 <p>Ingredient: <%= dose.ingredient.name %>, Description: <%= dose.description %></p>
 <%= link_to "Delete", dose_path(dose), method: :delete, data:  { confirm: "Are you sure?" }, class: "card-remove-link" %>
@@ -11,6 +11,11 @@
 
 
 
+<% if @cocktail.doses.empty? %>
+  <p><%= link_to 'Add an ingredient', new_cocktail_dose_path(@cocktail) %></p>
+<% else %>
+  <p><%= link_to 'Add another ingredient', new_cocktail_dose_path(@cocktail) %></p>
+<% end %>
 
-<p><%= link_to 'Cocktails List', cocktails_path %></p>
-<p><%= link_to 'Add a description',  new_cocktail_dose_path(@cocktail) %></p>
+<p><%= link_to 'Back to our cocktail list', cocktails_path %></p>
+

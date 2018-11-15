@@ -5,10 +5,11 @@
   <li>
 
     <%= link_to cocktail.name, cocktail_path(cocktail) %>
+    <%= link_to "Delete", cocktail, method: :delete, data:  { confirm: "Are you sure?" } %>
   <% end %>
   </li>
 </ul>
-<%= link_to "Create cocktail", new_cocktail_path(@cocktail) %>
+<%= link_to "Create your own cocktail", new_cocktail_path(@cocktail) %>
 
 
 
